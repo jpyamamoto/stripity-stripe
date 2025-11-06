@@ -11,7 +11,7 @@ on:
 
 jobs:
   check:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     name: Check if changed
     strategy:
       fail-fast: false
@@ -35,7 +35,7 @@ jobs:
           tag_name=$(cat latest | jq -r '.tag_name')
           echo "::set-output name=LATEST_TAG::${tag_name}"
   generate:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     name: Update services
     needs: check
     if: ${{ needs.check.outputs.current_tag != needs.check.outputs.latest_tag }}
